@@ -1,0 +1,22 @@
+Where should I run my containers?
+
+Amazon ECS and Amazon EKS manage how your containers run, but you still need a compute layer. AWS gives you a range of integrated compute options for where that happens. You can choose the right tool for the job to get the right blend of cost, performance, and features.
+
+On both Amazon EKS and Amazon ECS, you have the option of running your containers on the following compute options:
+On both Amazon EKS and Amazon ECS, you have the option of running your containers on the following compute options:
+
+AWS Fargate — a “serverless” container compute engine where you only pay for the resources required to run your containers. Suited for customers who do not want to worry about managing servers, handling capacity planning, or figuring out how to isolate container workloads for security.
+EC2 instances — offers widest choice of instance types including processor, storage, and networking. Ideal for customers who want to manage or customize the underlying compute environment and host operating system.
+AWS Outposts — run your containers using AWS infrastructure on premises for a consistent hybrid experience. Suited for customers who require local data processing, data residency, and hybrid use cases.
+AWS Local Zones — an extension of an AWS Region. Suited for customers who need the ability to place resources in multiple locations closer to end users.
+AWS Wavelength — ultra-low-latency mobile edge computing. Suited for 5G applications, interactive and immersive experiences, and connected vehicles.
+
+
+	Amazon ECS	Amazon EKS
+Pricing	ECS itself is free, you pay only for
+Amazon EC2 resources you use.	   The EKS management layer incurs an additional cost of $144 per month per cluster.
+Ease of deployment ECS
+Seamless deployment of tasks directly from the AWS management console.	
+EKS 
+Configure and deploy clusters via Kops or CloudFormation templates, which is more complex.
+Compatibility	Amazon-specific.	Supports multicloud and hybrid cloud deployments.
