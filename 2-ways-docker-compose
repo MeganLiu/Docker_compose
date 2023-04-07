@@ -1,0 +1,45 @@
+  when use docker compose to build docker application, 
+  (1)docker image can be pulled from repo
+  
+ ############## 
+ version: '3'
+services:
+  jenkins:
+    container_name: jenkins
+    image: jenkins/jenkins:lts-jdk11
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    volumes:
+      - "/home/ec2-user/jenkins_data/jenkins_home:/var/jenkins_home"
+    networks:
+      - net
+  db_host:
+    container_name: db
+    image: mysql:5.7
+    environment:
+      - "MYSQL_ROOT_PASSWORD=1234"
+    volumes:
+      - "/home/ec2-user/db_data:/var/lib/mysql"
+    networks:
+      - net
+networks:
+  net:
+ #####
+ (2) docker image is dynamically built from docker file by specifiying the docker image folder with docker folder path 
+  --nginx-folder
+     --DockFile
+     -- other files for docker image
+ ##then in the docker compose
+ 
+### Docker-compose.yml file ,    folder is nginx, dockerfile, Dockerfile
+  nginx-server:
+    image: my_nginx
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    ports:
+      - 80:80
+    container_name: my_nginx
+    restart: unless-stopped
+    network_mode: "host"
